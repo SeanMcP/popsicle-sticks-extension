@@ -4,11 +4,11 @@
     "description": "🙋🏾‍♂️ A random student picker",
     "permissions": ["storage"],
     "background": {
-        "scripts": ["src/background.js"],
+        "scripts": ["src/index.js"],
         "persistent": false
     },
     "browser_action": {
-        "default_popup": "src/popup.html"
+        "default_popup": "src/views/popup.html"
     },
     "manifest_version": 2
 }
