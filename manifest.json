@@ -1,0 +1,14 @@
+{
+    "name": "Popsicle Sticks",
+    "version": "1.0",
+    "description": "🙋🏾‍♂️ A random student picker",
+    "permissions": ["storage"],
+    "background": {
+        "scripts": ["src/background.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "src/popup.html"
+    },
+    "manifest_version": 2
+}
