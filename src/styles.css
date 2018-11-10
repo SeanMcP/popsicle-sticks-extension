@@ -29,15 +29,13 @@ footer > *:last-child {
 header {
     align-items: center;
     border-bottom: var(--border);
-    display: flex;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    grid-gap: 0.5rem;
 }
 
 header h1 {
     margin: 0;
-}
-
-header nav + h1 {
-    margin-left: 0.5rem;
 }
 
 footer {
@@ -79,4 +77,24 @@ button {
     border-right: 0;
     border-top-left-radius: var(--border-radius);
     flex: 1;
+}
+
+/* Lists */
+
+#student-list {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+#student-list li {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-gap: 0.5rem;
+    padding: 0.25rem;
+}
+
+#student-list li:nth-child(odd) {
+    background: whitesmoke;
 }

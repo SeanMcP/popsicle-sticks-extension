@@ -10,3 +10,11 @@ function buildNoneFoundElement(tag) {
     el.textContent = 'None found';
     return el;
 }
+
+function buildButton(id, text) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.id = id;
+    button.textContent = text;
+    return button;
+}
