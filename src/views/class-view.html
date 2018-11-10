@@ -7,16 +7,18 @@
 
 <body>
     <header>
-        <nav><a href="popup.html">< Back</a></nav>
+        <nav><a href="popup.html"><</a></nav>
         <h1 id="className"></h1>
     </header>
     <main>
+        <h2>Students:</h2>
         <ul id="student-list"></ul>
     </main>
     <footer>
-        <label for="name-input">Add a new student</label>
-        <input id="name-input" type="text" placeholder="Try first name and last initial" />
-        <button id="add-button" type="button">Add</button>
+        <section class="input-field">
+            <input id="name-input" type="text" placeholder="Add a student (e.g. Carlos V.)" aria-label="Student name" />
+            <button id="add-button" type="button">Add</button>
+        </section>
     </footer>
     <script src="../js/main.js"></script>
     <script src="../js/classView.js"></script>

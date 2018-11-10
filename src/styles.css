@@ -1,3 +1,82 @@
+:root {
+    --blue: dodgerblue;
+    --border: 1px solid #f1f1f1;
+    --border-radius: 0.5rem;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-width: 20rem;
+    margin: 0;
+}
+
+header, main, footer {
+    padding: 1rem;
+}
+
+header > *:first-child,
+main > *:first-child,
+footer > *:first-child {
+    margin-top: 0;
+}
+
+header > *:last-child,
+main > *:last-child,
+footer > *:last-child {
+    margin-bottom: 0;
+}
+
+header {
+    align-items: center;
+    border-bottom: var(--border);
+    display: flex;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav + h1 {
+    margin-left: 0.5rem;
+}
+
+footer {
+    border-top: var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form */
+
+button {
+    cursor: pointer;
+}
+
+.input-field {
+    display: flex;
+}
+
+.input-field button,
+.input-field input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.5rem;
+}
+
+.input-field button {
+    background: var(--blue);
+    border: var(--blue);
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.input-field input {
+    border: var(--border);
+    border-bottom-left-radius: var(--border-radius);
+    border-right: 0;
+    border-top-left-radius: var(--border-radius);
+    flex: 1;
 }
