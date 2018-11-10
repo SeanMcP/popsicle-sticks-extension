@@ -1,5 +1,5 @@
 :root {
-    --blue: dodgerblue;
+    --blue: #0065B2;
     --border: 1px solid #f1f1f1;
     --border-radius: 0.5rem;
     --text-color: #333;
@@ -36,8 +36,24 @@ header {
     grid-gap: 0.5rem;
 }
 
+header nav a {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 header h1 {
     margin: 0;
+}
+
+/* Links */
+a, a:visited {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
 }
 
 /* Display current random student */

@@ -1,5 +1,6 @@
 var classId = location.hash.slice(1);
 var current = document.querySelector("main > h1");
+var back = document.querySelector("header > nav > a");
 var nextButton = document.getElementById("next-button");
 var prevButton = document.getElementById("prev-button");
 var students = [];
@@ -12,6 +13,7 @@ chrome.storage.sync.get("studentsByClassId", function(result) {
     }
     students = shuffle(students);
     renderCurrent();
+    back.href = `class.html#${classId}`;
 });
 
 function renderCurrent() {
