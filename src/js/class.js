@@ -12,28 +12,27 @@ chrome.storage.sync.get("classes", function(result) {
 });
 
 function addStudent() {
-    while (studentList.firstChild) {
-        studentList.removeChild(studentList.firstChild);
-    }
-    chrome.storage.sync.get("studentsByClassId", function(result) {
-        var studentsByClassId = cloneObj(result.studentsByClassId);
-
-        var studentId = new Date().getTime();
-        if (!studentsByClassId[classId]) {
-            studentsByClassId[classId] = {};
-        }
-        studentsByClassId[classId][studentId] = studentNameInput.value;
-
-        chrome.storage.sync.set(
-            {
-                studentsByClassId: studentsByClassId
-            },
-            function() {
-                studentNameInput.value = "";
-                renderStudents();
+    if (studentNameInput.value) {
+        chrome.storage.sync.get("studentsByClassId", function(result) {
+            var studentsByClassId = cloneObj(result.studentsByClassId);
+    
+            var studentId = new Date().getTime();
+            if (!studentsByClassId[classId]) {
+                studentsByClassId[classId] = {};
             }
-        );
-    });
+            studentsByClassId[classId][studentId] = studentNameInput.value;
+    
+            chrome.storage.sync.set(
+                {
+                    studentsByClassId: studentsByClassId
+                },
+                function() {
+                    studentNameInput.value = "";
+                    renderStudents();
+                }
+            );
+        });
+    }
 }
 
 function deleteStudent(id) {
@@ -98,8 +97,13 @@ function renderStudents() {
                 studentList.appendChild(li);
             });
             count = Object.keys(students).length;
+            randomLink.disabled = false;
         } else {
-            studentList.appendChild(buildNoneFoundElement("li"));
+            var a = document.createElement('a');
+            a.href = `copy.html#${classId}`;
+            a.textContent = "Copy another class?"
+            studentList.appendChild(a);
+            randomLink.disabled = true;
         }
         studentCount.textContent = `Students (${count})`;
     });
