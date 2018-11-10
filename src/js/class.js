@@ -78,7 +78,7 @@ function renderStudents() {
     chrome.storage.sync.get("studentsByClassId", function(result) {
         var students = result.studentsByClassId[classId];
         var count = 0;
-        if (students) {
+        if (students && Object.keys(students).length) {
             Object.keys(students).forEach(function(id) {
                 var li = document.createElement("li");
                 var span = document.createElement("span");

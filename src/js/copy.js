@@ -4,7 +4,7 @@ var copyTo = document.getElementById("copy-to");
 var copyButton = document.getElementById("copy-button");
 
 chrome.storage.sync.get("classes", function(result) {
-    copyTo.innerHTML = `to <strong>${result.classes[classId]}</strong>.`;
+    copyTo.innerHTML = `to <strong>${result.classes[classId]}</strong>`;
     Object.keys(result.classes).forEach(function(id) {
         if (id !== classId) {
             var option = document.createElement("option");
