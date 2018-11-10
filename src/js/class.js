@@ -5,6 +5,7 @@ var studentNameInput = document.getElementById("name-input");
 var addStudentButton = document.getElementById("add-button");
 var deleteClassButton = document.getElementById("delete-button");
 var studentList = document.getElementById("student-list");
+var randomLink = document.getElementById("random-link");
 
 chrome.storage.sync.get("classes", function(result) {
     heading.textContent = result.classes[classId];
@@ -87,7 +88,8 @@ function renderStudents() {
 
                 var button = document.createElement("button");
                 button.type = "button";
-                button.textContent = "Delete - " + id.slice(-3);
+                button.classList.add('delete');
+                button.textContent = "Remove";
                 button.addEventListener("click", function() {
                     deleteStudent(id);
                 });
@@ -105,5 +107,8 @@ function renderStudents() {
 
 addStudentButton.addEventListener("click", addStudent);
 deleteClassButton.addEventListener("click", deleteClass);
+randomLink.addEventListener("click", function() {
+    document.location = `random.html#${classId}`;
+});
 
 renderStudents();
