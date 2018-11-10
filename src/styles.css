@@ -39,6 +39,10 @@ header {
 header nav a {
     font-size: 1.25rem;
     font-weight: bold;
+}
+
+header nav a:hover {
+    color: dodgerblue;
     text-decoration: none;
 }
 
@@ -105,6 +109,11 @@ button.delete:hover {
     text-decoration: underline;
 }
 
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .input-field {
     display: flex;
 }
@@ -147,4 +156,20 @@ li {
 
 li:nth-child(even) {
     background: whitesmoke;
+}
+
+/* Page styles */
+
+#copy main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#copy main > *:not(:first-child) {
+    margin-top: 0.5rem;
+}
+
+#copy option {
+    text-align: center;
 }
