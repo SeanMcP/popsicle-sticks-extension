@@ -33,18 +33,22 @@ function addStudent() {
 function renderStudents() {
     chrome.storage.sync.get('studentsByClassId', function(result) {
         var students = result.studentsByClassId[classId];
-        for (var id in students) {
-            var li = document.createElement('li');
-            var span = document.createElement('span');
-            span.textContent = students[id];
-            li.appendChild(span);
-
-            // var button = document.createElement('button');
-            // button.type = 'button';
-            // button.textContent = 'Delete';
-            // li.appendChild(button);
-
-            studentList.appendChild(li);
+        if (students) {
+            for (var id in students) {
+                var li = document.createElement('li');
+                var span = document.createElement('span');
+                span.textContent = students[id];
+                li.appendChild(span);
+    
+                // var button = document.createElement('button');
+                // button.type = 'button';
+                // button.textContent = 'Delete';
+                // li.appendChild(button);
+    
+                studentList.appendChild(li);
+            }
+        } else {
+            studentList.appendChild(buildNoneFoundElement('li'));
         }
     });
 }

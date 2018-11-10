@@ -3,14 +3,18 @@ var classNameInput = document.getElementById('name-input');
 var addClassButton = document.getElementById('add-button');
 
 chrome.storage.sync.get('classes', function(result) {
-    for (var id in result.classes) {
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = `class.html#${id}`;
-        a.textContent = result.classes[id];
-        li.appendChild(a);
-        classList.appendChild(li);
-    };
+    if (Object.keys(result.classes).length) {
+        for (var id in result.classes) {
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = `class.html#${id}`;
+            a.textContent = result.classes[id];
+            li.appendChild(a);
+            classList.appendChild(li);
+        };
+    } else {
+        classList.appendChild(buildNoneFoundElement('li'));
+    }
 });
 
 function addClass() {
