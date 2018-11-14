@@ -75,7 +75,7 @@ function renderStudents() {
     while (studentList.firstChild) {
         studentList.removeChild(studentList.firstChild);
     }
-    chrome.storage.sync.get("studentsByClassId", function(result) {
+    chrome.storage.sync.get(["classes", "studentsByClassId"], function(result) {
         var students = result.studentsByClassId[classId];
         var count = 0;
         if (students && Object.keys(students).length) {
@@ -99,10 +99,16 @@ function renderStudents() {
             count = Object.keys(students).length;
             randomLink.disabled = false;
         } else {
-            var a = document.createElement('a');
-            a.href = `copy.html#${classId}`;
-            a.textContent = "Copy another class?"
-            studentList.appendChild(a);
+            if (Object.keys(result.classes).length > 1) {
+                var a = document.createElement('a');
+                a.href = `copy.html#${classId}`;
+                a.textContent = "Copy another class?"
+                studentList.appendChild(a);
+            } else {
+                var p = document.createElement('p');
+                p.textContent = "No students yet!";
+                studentList.appendChild(p);
+            }
             randomLink.disabled = true;
         }
         studentCount.textContent = `Students (${count})`;
