@@ -36,6 +36,10 @@ header {
     grid-gap: 0.5rem;
 }
 
+#home header {
+    display: block;
+}
+
 header nav a {
     font-size: 1.25rem;
     font-weight: bold;
