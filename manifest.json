@@ -2,7 +2,6 @@
     "name": "Popsicle Sticks",
     "version": "1.0",
     "description": "🙋🏾‍♂️ A random student picker",
-    "default_locale": "en",
     "author": "Sean McPherson",
     "permissions": ["storage"],
     "background": {
