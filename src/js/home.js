@@ -8,7 +8,7 @@ chrome.storage.sync.get('classes', function(result) {
         for (var id in result.classes) {
             var li = document.createElement('li')
             var a = document.createElement('a')
-            a.href = `class.html#${id}`
+            a.href = `class.html?id=${id}`
             a.textContent = result.classes[id]
             li.appendChild(a)
             classList.appendChild(li)
@@ -33,7 +33,7 @@ function addClass(event) {
             },
             function() {
                 classNameInput.value = ''
-                document.location = `class.html#${id}`
+                document.location = `class.html?id=${id}`
             }
         )
     })
