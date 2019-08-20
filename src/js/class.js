@@ -1,4 +1,4 @@
-var classId = location.hash.slice(1)
+const classId = getId()
 var heading = document.querySelector('header > h1')
 var studentCount = document.getElementById('student-count')
 var studentNameInput = document.getElementById('name-input')
@@ -101,7 +101,7 @@ function renderStudents() {
         } else {
             if (Object.keys(result.classes).length > 1) {
                 var a = document.createElement('a')
-                a.href = `copy.html#${classId}`
+                a.href = `copy.html?id=${classId}`
                 a.textContent = 'Copy another class?'
                 studentList.appendChild(a)
             } else {
@@ -118,7 +118,7 @@ function renderStudents() {
 document.forms['add-student'].onsubmit = addStudent
 deleteClassButton.addEventListener('click', deleteClass)
 randomLink.addEventListener('click', function() {
-    document.location = `random.html#${classId}`
+    document.location = `random.html?id=${classId}`
 })
 
 renderStudents()
