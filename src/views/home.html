@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
 
-<head>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-
-<body id="home">
-    <header>
-        <h1>Popsicle Sticks</h1>
-    </header>
-    <main>
-        <h2 id="class-count">Classes</h2>
-        <ul id="class-list"></ul>
-    </main>
-    <footer>
-        <section class="input-field">
-            <input id="name-input" type="text" placeholder="Add a class" aria-label="Class name" />
-            <button id="add-button" type="button">Add</button>
-        </section>
-    </footer>
-    <script src="../js/main.js"></script>
-    <script src="../js/home.js"></script>
-</body>
-
+    <body id="home">
+        <header>
+            <h1>Popsicle Sticks</h1>
+        </header>
+        <main>
+            <h2 id="class-count">Classes</h2>
+            <ul id="class-list"></ul>
+        </main>
+        <footer>
+            <form name="add-class">
+                <section class="input-field">
+                    <input
+                        id="name-input"
+                        type="text"
+                        placeholder="Add a class"
+                        aria-label="Class name"
+                    />
+                    <button>Add</button>
+                </section>
+            </form>
+        </footer>
+        <script src="../js/main.js"></script>
+        <script src="../js/home.js"></script>
+    </body>
 </html>
