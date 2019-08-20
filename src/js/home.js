@@ -22,21 +22,23 @@ chrome.storage.sync.get('classes', function(result) {
 
 function addClass(event) {
     event.preventDefault()
-    chrome.storage.sync.get('classes', function(result) {
-        var classes = cloneObj(result.classes)
-        var id = new Date().getTime()
-        classes[id] = classNameInput.value
+    if (classNameInput.value) {
+        chrome.storage.sync.get('classes', function(result) {
+            var classes = cloneObj(result.classes)
+            var id = new Date().getTime()
+            classes[id] = classNameInput.value
 
-        chrome.storage.sync.set(
-            {
-                classes: classes
-            },
-            function() {
-                classNameInput.value = ''
-                document.location = `class.html?id=${id}`
-            }
-        )
-    })
+            chrome.storage.sync.set(
+                {
+                    classes
+                },
+                function() {
+                    classNameInput.value = ''
+                    document.location = `class.html?id=${id}`
+                }
+            )
+        })
+    }
 }
 
 document.forms['add-class'].onsubmit = addClass
