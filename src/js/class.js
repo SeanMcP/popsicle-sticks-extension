@@ -10,8 +10,8 @@ chrome.storage.sync.get('classes', function(result) {
     heading.textContent = result.classes[classId]
 })
 
-function addStudent(e) {
-    e.preventDefault()
+function addStudent(event) {
+    event.preventDefault()
     if (studentNameInput.value) {
         chrome.storage.sync.get('studentsByClassId', function(result) {
             var studentsByClassId = cloneObj(result.studentsByClassId)
