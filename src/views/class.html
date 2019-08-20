@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
 
-<head>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-
-<body>
-    <header>
-        <nav><a href="home.html"><</a></nav>
-        <h1></h1>
-        <button id="delete-button" class="delete" type="button">Delete</button>
-    </header>
-    <main>
-        <h2 id="student-count">Students</h2>
-        <ul id="student-list"></ul>
-    </main>
-    <footer>
-        <section class="input-field">
-            <input id="name-input" type="text" placeholder="Add a student (e.g. Carlos V.)" aria-label="Student name" />
-            <button id="add-button" type="button">Add</button>
-        </section>
-    </footer>
-    <footer>
-        <button id="random-link" type="button">Random Picker</button>
-    </footer>
-    <script src="../js/main.js"></script>
-    <script src="../js/class.js"></script>
-</body>
-
+    <body>
+        <header>
+            <nav><a href="home.html"><</a></nav>
+            <h1></h1>
+            <button id="delete-button" class="delete" type="button">
+                Delete
+            </button>
+        </header>
+        <main>
+            <h2 id="student-count">Students</h2>
+            <ul id="student-list"></ul>
+        </main>
+        <footer>
+            <form name="add-student">
+                <section class="input-field">
+                    <input
+                        id="name-input"
+                        type="text"
+                        placeholder="Add a student (e.g. Carlos V.)"
+                        aria-label="Student name"
+                    />
+                    <button>Add</button>
+                </section>
+            </form>
+        </footer>
+        <footer>
+            <button id="random-link" type="button">Random Picker</button>
+        </footer>
+        <script src="../js/main.js"></script>
+        <script src="../js/class.js"></script>
+    </body>
 </html>
