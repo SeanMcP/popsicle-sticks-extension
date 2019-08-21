@@ -4,7 +4,7 @@
     "version": "1.1",
     "description": "Randomly select a student in your class from any tab",
     "author": "Sean McPherson",
-    "permissions": ["storage"],
+    "permissions": ["storage", "downloads"],
     "background": {
         "scripts": ["src/index.js"],
         "persistent": false
