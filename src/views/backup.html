@@ -15,11 +15,17 @@
             <form name="download-data">
                 <button>Download data</button>
             </form>
+            <hr />
             <h2>Upload</h2>
             <p>Upload class and student data from your computer.</p>
             <form name="upload-data">
-                <label for="upload-file"></label>
-                <input type="file" name="upload-file" id="upload-file" />
+                <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    accept=".json"
+                    aria-label="Upload a data file"
+                />
                 <button>Upload</button>
             </form>
         </main>
