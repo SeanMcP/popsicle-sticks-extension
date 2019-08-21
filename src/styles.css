@@ -13,6 +13,12 @@ body {
     margin: 0;
 }
 
+hr {
+    border: 0;
+    border-bottom: var(--border);
+    margin: 1rem 0;
+}
+
 header,
 main,
 footer {
@@ -138,6 +144,19 @@ button[disabled] {
     border-right: 0;
     border-top-left-radius: var(--border-radius);
     flex: 1;
+}
+
+input[type='file'] {
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+p.error-message {
+    background: rgb(249, 205, 205);
+    border: 1px solid firebrick;
+    color: firebrick;
+    padding: 0.25rem;
+    margin: 0.5rem 0 0;
 }
 
 /* Lists */
