@@ -1,3 +1,5 @@
+const secret = 'Luke 8:17'
+
 function generateJSONBlob(data) {
     return new Blob([JSON.stringify(data, null, 2)], { type: 'octet/stream' })
 }
@@ -6,6 +8,7 @@ function downloadFile() {
     chrome.storage.sync.get(['classes', 'studentsByClassId'], result => {
         const blob = generateJSONBlob({
             classes: result.classes,
+            secret,
             studentsByClassId: result.studentsByClassId
         })
         const url = URL.createObjectURL(blob)
