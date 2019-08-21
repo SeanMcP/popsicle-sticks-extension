@@ -1,5 +1,5 @@
 :root {
-    --blue: #0065B2;
+    --blue: #0065b2;
     --border: 1px solid #f1f1f1;
     --border-radius: 0.5rem;
     --text-color: #333;
@@ -7,12 +7,15 @@
 
 body {
     color: var(--text-color);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     min-width: 20rem;
     margin: 0;
 }
 
-header, main, footer {
+header,
+main,
+footer {
     padding: 1rem;
 }
 
@@ -31,13 +34,7 @@ footer > *:last-child {
 header {
     align-items: center;
     border-bottom: var(--border);
-    display: grid;
-    grid-template-columns: min-content 1fr min-content;
-    grid-gap: 0.5rem;
-}
-
-#home header {
-    display: block;
+    display: flex;
 }
 
 header nav a {
@@ -51,16 +48,23 @@ header nav a:hover {
 }
 
 header h1 {
+    flex: 1;
     margin: 0;
 }
 
+header * + h1 {
+    margin-left: 0.5rem;
+}
+
 /* Links */
-a, a:visited {
+a,
+a:visited {
     color: var(--blue);
     text-decoration: none;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
     text-decoration: underline;
 }
 
@@ -84,7 +88,8 @@ footer .random-buttons {
 
 /* Form */
 
-button, input {
+button,
+input {
     font-family: inherit;
     font-size: inherit;
     padding: 0.5rem;
