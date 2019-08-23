@@ -2,6 +2,15 @@
 
 🙋🏾‍♂️ A random student picker browser extension
 
+## Features
+
+-   Add and remove classes and students
+-   Randomly select a student from your class
+-   Copy a class of students
+-   Download and backup class and student data
+-   Upload backed up data
+-   Light and dark themes
+
 ## Install
 
 1. **Download**: Click "Clone or download" > "Download ZIP" or [use this link](https://github.com/SeanMcP/popsicle-sticks-mini/archive/master.zip)
