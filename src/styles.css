@@ -125,7 +125,7 @@ button.delete {
 }
 
 button.delete:hover {
-    color: firebrick;
+    color: var(--delete-text-color);
     opacity: 1;
     text-decoration: underline;
 }
