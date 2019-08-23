@@ -15,3 +15,11 @@ function getId() {
     const params = new URLSearchParams(window.location.search)
     return params.get('id') || ''
 }
+
+function setTheme() {
+    chrome.storage.sync.get('theme', result => {
+        document.body.dataset.theme = result.theme
+    })
+}
+
+setTheme()

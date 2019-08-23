@@ -5,18 +5,22 @@ function generateJSONBlob(data) {
 }
 
 function downloadFile() {
-    chrome.storage.sync.get(['classes', 'studentsByClassId'], result => {
-        const blob = generateJSONBlob({
-            classes: result.classes,
-            secret,
-            studentsByClassId: result.studentsByClassId
-        })
-        const url = URL.createObjectURL(blob)
-        chrome.downloads.download({
-            url,
-            filename: 'popsicle-sticks-data.json'
-        })
-    })
+    chrome.storage.sync.get(
+        ['classes', 'studentsByClassId', 'theme'],
+        result => {
+            const blob = generateJSONBlob({
+                classes: result.classes,
+                secret,
+                studentsByClassId: result.studentsByClassId,
+                theme: result.theme
+            })
+            const url = URL.createObjectURL(blob)
+            chrome.downloads.download({
+                url,
+                filename: 'popsicle-sticks-data.json'
+            })
+        }
+    )
 }
 
 document.forms['download-data'].onsubmit = downloadFile
