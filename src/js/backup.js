@@ -47,9 +47,11 @@ function uploadFile(event) {
     event.preventDefault()
     const file = new FormData(event.target).get('file')
 
-    const reader = new FileReader()
-    reader.onload = saveUploadedData
-    reader.readAsBinaryString(file)
+    if (file.size > 0) {
+        const reader = new FileReader()
+        reader.onload = saveUploadedData
+        reader.readAsBinaryString(file)
+    }
 }
 
 function handleUploadError() {
