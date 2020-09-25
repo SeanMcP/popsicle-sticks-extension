@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+        <header>
+            <nav><a id="class-link" href="class.html"><</a></nav>
+            <h1>Bulk Add</h1>
+            <button id="delete-button" class="delete" type="button">
+                Delete
+            </button>
+        </header>
+        <main>
+            <form id="bulk-add">
+                <textarea name="students" placeholder="Add students..."></textarea>
+                <select name="delineator">
+                    <option value="newline">One name per line</option>
+                    <option value="comma">Names separated by commas</option>
+                </select>
+                <button>Add All</button>
+            </form>
+        </main>
+        <footer>
+        </footer>
+        <script src="../js/main.js"></script>
+        <script src="../js/bulk.js"></script>
+    </body>
+</html>
