@@ -1,7 +1,5 @@
 #!/env/bash
 
-echo "Version (e.g. 1.1)"
+version=$(cat ./manifest.json | node -pe 'JSON.parse(fs.readFileSync(0)).version')
 
-read version
-
-zip -r build-v$version.zip ./ -x "*.DS_Store" "*.svg" \*.git\* "*README.md" \*.chrome\*
+zip -r build-v$version.zip ./manifest.json ./src/ -x "*.svg"
