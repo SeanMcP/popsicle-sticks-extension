@@ -27,6 +27,8 @@ bulkAddForm.addEventListener("submit", (event) => {
     }
   }
 
+  names = names.map(name => name.trim()).filter(name => name)
+
   if (names.length === 0) return;
 
   chrome.storage.sync.get("studentsByClassId", (result) => {
@@ -36,9 +38,10 @@ bulkAddForm.addEventListener("submit", (event) => {
       studentsByClassId[classId] = {};
     }
 
-    names.forEach((name) => {
-      const id = new Date().getTime() * Math.random();
-      studentsByClassId[classId][id] = name;
+
+    const id = new Date().getTime() - names.length;
+    names.forEach((name, i) => {
+      studentsByClassId[classId][id + i] = name;
     });
 
     chrome.storage.sync.set(
