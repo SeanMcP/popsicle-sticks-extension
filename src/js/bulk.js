@@ -1,5 +1,3 @@
-// @ts-check
-
 const classId = getId();
 
 const classLink = document.getElementById("class-link");
