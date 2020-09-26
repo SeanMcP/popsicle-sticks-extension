@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="../styles.css" />
-    </head>
+  <head>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
 
-    <body id="home">
-        <header>
-            <nav><a href="./settings.html"><</a></nav>
-            <h1>Data</h1>
-        </header>
-        <main>
-            <h2>Download</h2>
-            <p>Backup your class and student data on your computer.</p>
-            <form name="download-data">
-                <button>Download data</button>
-            </form>
-            <hr />
-            <h2>Upload</h2>
-            <p>Upload class and student data from your computer.</p>
-            <form name="upload-data">
-                <input
-                    type="file"
-                    name="file"
-                    id="file"
-                    accept=".json"
-                    aria-label="Upload a data file"
-                />
-                <button>Upload</button>
-            </form>
-        </main>
-        <script src="../js/main.js"></script>
-        <script src="../js/backup.js"></script>
-    </body>
+  <body id="home">
+    <header>
+      <nav><a aria-label="Back" href="./settings.html">&lt;</a></nav>
+      <h1>Data</h1>
+    </header>
+    <main>
+      <h2>Download</h2>
+      <p>Backup your class and student data on your computer.</p>
+      <form name="download-data">
+        <button>Download data</button>
+      </form>
+      <hr />
+      <h2>Upload</h2>
+      <p>
+        Upload class and student data that you previously downloaded from this
+        extension.
+      </p>
+      <form name="upload-data">
+        <input
+          type="file"
+          name="file"
+          id="file"
+          accept=".json"
+          aria-label="Upload a data file"
+        />
+        <button>Upload</button>
+      </form>
+    </main>
+    <script src="../js/main.js"></script>
+    <script src="../js/backup.js"></script>
+  </body>
 </html>

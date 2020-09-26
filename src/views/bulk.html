@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body id="bulk">
+    <header>
+      <nav><a aria-label="Back" id="class-link" href="class.html">&lt;</a></nav>
+      <h1>Add multiple</h1>
+    </header>
+    <main>
+      <form class="grid" id="bulk-add">
+        <section class="grid --tight">
+          <label id="students-label"><b>Students</b></label>
+          <label id="students-desc">
+            Paste the list of students in the box below.
+          </label>
+          <textarea
+            aria-describedby="students-desc"
+            aria-labelledby="students-label"
+            name="students"
+            placeholder="Paste students here..."
+          ></textarea>
+        </section>
+        <section class="grid --tight">
+          <label id="delineator-label"><b>Format</b></label>
+          <select aria-labelledby="delineator-label" name="delineator">
+            <option value="newline">One name per line</option>
+            <option value="comma">Names separated by commas</option>
+          </select>
+        </section>
+        <button>Add All</button>
+      </form>
+    </main>
+    <script src="../js/main.js"></script>
+    <script src="../js/bulk.js"></script>
+  </body>
+</html>

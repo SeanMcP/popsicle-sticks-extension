@@ -6,6 +6,9 @@ var deleteClassButton = document.getElementById('delete-button')
 var studentList = document.getElementById('student-list')
 var randomLink = document.getElementById('random-link')
 
+const bulkLink = document.getElementById('bulk-link')
+bulkLink.href = bulkLink.href + '?id=' + classId
+
 chrome.storage.sync.get('classes', function(result) {
     heading.textContent = result.classes[classId]
 })
