@@ -145,13 +145,17 @@ button[disabled] {
   border-top-left-radius: 0;
 }
 
-input:not([type="file"]),
+.input-field input {
+  border-right: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+input,
 textarea {
   background: transparent;
   border: 1px solid var(--border-color);
-  border-bottom-left-radius: var(--border-radius);
-  border-right: 0;
-  border-top-left-radius: var(--border-radius);
+  border-radius: var(--border-radius);
   color: var(--text-color);
   flex: 1;
 }
@@ -162,7 +166,7 @@ input::placeholder {
 
 input[type="file"] {
   margin: 0 0 1rem;
-  padding: 0;
+  padding: 0.5rem;
 }
 
 p.error-message {
