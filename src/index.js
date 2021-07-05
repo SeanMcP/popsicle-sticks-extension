@@ -5,6 +5,7 @@ chrome.runtime.onInstalled.addListener(function() {
         }
         chrome.storage.sync.set({
             classes: {},
+            history: null,
             initiated: true,
             studentsByClassId: {},
             theme: 'light'
