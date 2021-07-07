@@ -1,55 +1,68 @@
-const classId = getId()
-var current = document.querySelector('main > h1')
-var back = document.querySelector('header > nav > a')
-var nextButton = document.getElementById('next-button')
-var prevButton = document.getElementById('prev-button')
-var students = []
-var index = 0
+const classId = getId();
+const current = document.querySelector("main > h1");
+const back = document.querySelector("header > nav > a");
+const nextButton = document.getElementById("next-button");
+const prevButton = document.getElementById("prev-button");
+let students = [];
+let index = 0;
 
-chrome.storage.sync.get('studentsByClassId', function(result) {
-    var studentsById = result.studentsByClassId[classId]
-    for (var id in studentsById) {
-        students.push(studentsById[id])
+back.href = `class.html?id=${classId}&back=true`;
+
+chrome.storage.sync.get(
+  ["history", "studentsByClassId"],
+  function ({ history, studentsByClassId }) {
+    // History could be for another page, so we need to check
+    // if we have the correct data first
+    if (history && history.data && history.data.students) {
+      students = history.data.students;
+      index = history.data.index;
+    } else {
+      const studentsById = studentsByClassId[classId];
+      for (const id in studentsById) {
+        students.push(studentsById[id]);
+      }
+      students = shuffle(students);
     }
-    students = shuffle(students)
-    renderCurrent()
-    back.href = `class.html?id=${classId}`
-})
+    renderCurrent();
+  }
+);
 
 function renderCurrent() {
-    current.textContent = students[index]
+  // Add current state to history before rendering
+  addToHistory({ students, index });
+  current.textContent = students[index];
 }
 
 // Taken from https://stackoverflow.com/a/6274398/8486161
 function shuffle(array) {
-    var counter = array.length
-    while (counter > 0) {
-        var index = Math.floor(Math.random() * counter)
-        counter--
-        var temp = array[counter]
-        array[counter] = array[index]
-        array[index] = temp
-    }
-    return array
+  let counter = array.length;
+  while (counter > 0) {
+    let index = Math.floor(Math.random() * counter);
+    counter--;
+    let temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+  return array;
 }
 
 function prev() {
-    index--
-    if (index < 0) {
-        index = students.length - 1
-        students = shuffle(students)
-    }
-    renderCurrent()
+  index--;
+  if (index < 0) {
+    index = students.length - 1;
+    students = shuffle(students);
+  }
+  renderCurrent();
 }
 
 function next() {
-    index++
-    if (index > students.length - 1) {
-        index = 0
-        students = shuffle(students)
-    }
-    renderCurrent()
+  index++;
+  if (index > students.length - 1) {
+    index = 0;
+    students = shuffle(students);
+  }
+  renderCurrent();
 }
 
-prevButton.addEventListener('click', prev)
-nextButton.addEventListener('click', next)
+prevButton.addEventListener("click", prev);
+nextButton.addEventListener("click", next);
