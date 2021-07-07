@@ -10,6 +10,9 @@ function addToHistory(data = null) {
   });
 }
 
+// Probably not the best to have this here
+addToHistory()
+
 function cloneObj(obj) {
   return JSON.parse(JSON.stringify(obj));
 }

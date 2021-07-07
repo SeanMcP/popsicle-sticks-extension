@@ -2,24 +2,6 @@ var classList = document.getElementById("class-list");
 var classCount = document.getElementById("class-count");
 var classNameInput = document.getElementById("name-input");
 
-if (!window.location.search.includes("back=true")) {
-  chrome.storage.sync.get("history", ({ history }) => {
-    const fiveMinutesAgo = new Date().getTime() - 1000 * 60 * 5;
-
-    console.log(history);
-
-    if (history && history.timestamp > fiveMinutesAgo) {
-      let path = history.path;
-      if (history.data) {
-        path += "&history=true";
-      }
-      window.location = path;
-    } else {
-      chrome.storage.sync.set({ history: null });
-    }
-  });
-}
-
 chrome.storage.sync.get("classes", function (result) {
   var count = 0;
   if (Object.keys(result.classes).length) {

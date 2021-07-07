@@ -1,5 +1,4 @@
 const classId = getId();
-addToHistory();
 var heading = document.querySelector("header > h1");
 var studentCount = document.getElementById("student-count");
 var studentNameInput = document.getElementById("name-input");

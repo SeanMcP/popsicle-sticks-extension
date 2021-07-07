@@ -1,7 +1,7 @@
 const classId = getId();
 
 const classLink = document.getElementById("class-link");
-classLink.href = classLink.href + "?id=" + classId;
+classLink.href = classLink.href + "?id=" + classId + '&back=true';
 
 const bulkAddForm = document.getElementById("bulk-add");
 
