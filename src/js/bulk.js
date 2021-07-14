@@ -1,7 +1,10 @@
+import { cloneObj, getId, onLoad } from "./shared.js";
+
+onLoad();
 const classId = getId();
 
 const classLink = document.getElementById("class-link");
-classLink.href = classLink.href + "?id=" + classId + '&back=true';
+classLink.href = classLink.href + "?id=" + classId + "&back=true";
 
 const bulkAddForm = document.getElementById("bulk-add");
 
@@ -12,20 +15,20 @@ bulkAddForm.addEventListener("submit", (event) => {
   const students = fd.get("students");
   const delineator = fd.get("delineator");
 
-  let names = []
+  let names = [];
 
   switch (delineator) {
-    case 'newline': {
-      names = students.split("\r\n")
+    case "newline": {
+      names = students.split("\r\n");
       break;
     }
-    case 'comma': {
-      names = students.split(",")
+    case "comma": {
+      names = students.split(",");
       break;
     }
   }
 
-  names = names.map(name => name.trim()).filter(name => name)
+  names = names.map((name) => name.trim()).filter((name) => name);
 
   if (names.length === 0) return;
 
@@ -35,7 +38,6 @@ bulkAddForm.addEventListener("submit", (event) => {
     if (!studentsByClassId[classId]) {
       studentsByClassId[classId] = {};
     }
-
 
     const id = new Date().getTime() - names.length;
     names.forEach((name, i) => {

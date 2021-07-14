@@ -1,3 +1,7 @@
+import { addToHistory } from "./history.js";
+import { getId, onLoad } from "./shared.js";
+
+onLoad();
 const classId = getId();
 const current = document.querySelector("main > h1");
 const back = document.querySelector("header > nav > a");
@@ -13,6 +17,7 @@ chrome.storage.sync.get(
   function ({ history, studentsByClassId }) {
     // History could be for another page, so we need to check
     // if we have the correct data first
+    console.log("🚩 [LM]:", history);
     if (history && history.data && history.data.students) {
       students = history.data.students;
       index = history.data.index;

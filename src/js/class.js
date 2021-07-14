@@ -1,3 +1,6 @@
+import { cloneObj, getId, onLoad } from "./shared.js";
+
+onLoad();
 const classId = getId();
 var heading = document.querySelector("header > h1");
 var studentCount = document.getElementById("student-count");
@@ -56,15 +59,16 @@ function deleteStudent(id) {
 
 function deleteClass() {
   chrome.storage.sync.get(["classes", "studentsByClassId"], function (result) {
-    var classes = cloneObj(result.classes);
+    const classes = cloneObj(result.classes);
     delete classes[classId];
 
-    var studentsByClassId = cloneObj(result.studentsByClassId);
+    const studentsByClassId = cloneObj(result.studentsByClassId);
     delete studentsByClassId[classId];
 
     chrome.storage.sync.set(
       {
         classes: classes,
+        history: null,
         studentsByClassId: studentsByClassId,
       },
       function () {

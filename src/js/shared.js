@@ -1,6 +1,4 @@
-console.log("Up and running 🏃‍♂️");
-
-function addToHistory(data = null) {
+export function addToHistory(data = null) {
   chrome.storage.sync.set({
     history: {
       data,
@@ -10,29 +8,23 @@ function addToHistory(data = null) {
   });
 }
 
-// Probably not the best to have this here
-addToHistory()
-
-function cloneObj(obj) {
+export function cloneObj(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-function buildNoneFoundElement(tag) {
-  var el = document.createElement(tag);
-  el.classList.add("none-found");
-  el.textContent = "None found";
-  return el;
-}
-
-function getId() {
+export function getId() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id") || "";
 }
 
-function setTheme() {
+export function onLoad() {
+  console.log("Up and running 🏃‍♂️");
+
+  setTheme();
+}
+
+export function setTheme() {
   chrome.storage.sync.get("theme", (result) => {
     document.body.dataset.theme = result.theme;
   });
 }
-
-setTheme();

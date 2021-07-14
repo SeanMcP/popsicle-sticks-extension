@@ -1,3 +1,6 @@
+import { cloneObj, onLoad } from "./shared.js";
+
+onLoad();
 var classList = document.getElementById("class-list");
 var classCount = document.getElementById("class-count");
 var classNameInput = document.getElementById("name-input");
@@ -15,7 +18,10 @@ chrome.storage.sync.get("classes", function (result) {
     }
     count = Object.keys(result.classes).length;
   } else {
-    classList.appendChild(buildNoneFoundElement("li"));
+    let el = document.createElement("li");
+    el.classList.add("none-found");
+    el.textContent = "None found";
+    classList.appendChild(el);
   }
   classCount.textContent = `Classes (${count})`;
 });
@@ -42,3 +48,4 @@ function addClass(event) {
 }
 
 document.forms["add-class"].onsubmit = addClass;
+
