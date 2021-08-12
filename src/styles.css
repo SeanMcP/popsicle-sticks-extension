@@ -65,7 +65,7 @@ header h1 {
 }
 
 header * + h1 {
-  margin-left: 0.5rem;
+  margin-left: 5px;
 }
 
 /* Links */
@@ -78,6 +78,39 @@ a:visited {
 a:hover,
 a:active {
   text-decoration: underline;
+}
+
+/* Icons */
+
+[data-icon] {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}
+
+[data-icon]:focus,
+[data-icon]:hover {
+  background-color: var(--background-alt);
+}
+
+[data-icon]::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+}
+
+[data-icon="chevron-left"]::after {
+  background-image: url("./img/chevron-left.svg");
+}
+
+[data-icon="external-link"]::after {
+  background-image: url("./img/external-link.svg");
+}
+
+[data-icon="gear"]::after {
+  background-image: url("./img/gear.svg");
 }
 
 /* Display current random student */
@@ -108,13 +141,19 @@ textarea {
   padding: 0.5rem;
 }
 
-button {
+button:not(.reset) {
   background: var(--blue);
   border: 1px solid var(--blue);
   border-radius: var(--border-radius);
   color: var(--button-text-color);
   cursor: pointer;
   padding: 0.5rem 1rem;
+}
+
+button.reset {
+  background: none;
+  border: none;
+  padding: none;
 }
 
 button.delete {

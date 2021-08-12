@@ -21,6 +21,21 @@ export function onLoad() {
   console.log("Up and running 🏃‍♂️");
 
   setTheme();
+
+  const popOutButton = document.getElementById("pop-out");
+
+  if (popOutButton) {
+    popOutButton.addEventListener("click", () => {
+      const bodyRect = document.querySelector("body").getBoundingClientRect();
+      alert(bodyRect.width + 'x' + bodyRect.height)
+      chrome.windows.create({
+        url: window.location.href,
+        type: "popup",
+        width: Math.round(bodyRect.width ? bodyRect.width + 60 : 375),
+        height: Math.round(bodyRect.height ? bodyRect.height + 30 : 600),
+      });
+    });
+  }
 }
 
 export function setTheme() {
