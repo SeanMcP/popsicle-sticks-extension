@@ -18,7 +18,11 @@ const page = window.location.pathname.split(".html")[0].split("/").pop();
 
 switch (page) {
   case "home": {
-    if (!window.location.search.includes("back=true")) {
+    if (window.location.search.includes("back=true")) {
+      chrome.storage.sync.set({
+        history: null,
+      });
+    } else {
       chrome.storage.sync.get("history", ({ history }) => {
         if (history && history.timestamp > historyCutoff()) {
           window.location = history.path;
