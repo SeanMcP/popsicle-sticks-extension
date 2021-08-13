@@ -5,18 +5,26 @@ let classList = document.getElementById("class-list");
 let classCount = document.getElementById("class-count");
 let classNameInput = document.getElementById("name-input");
 
-chrome.storage.sync.get("classes", function (result) {
+chrome.storage.sync.get("classes", function ({ classes }) {
   let count = 0;
-  if (Object.keys(result.classes).length) {
-    for (let id in result.classes) {
+  if (Object.keys(classes).length) {
+    const ordered = Object.entries(classes);
+
+    // TODO: Consider making this a setting
+    ordered.sort((a, b) => {
+      return a[1] < b[1] ? -1 : 1;
+    });
+
+    ordered.forEach(([id, name]) => {
       let li = document.createElement("li");
       let a = document.createElement("a");
       a.href = `class.html?id=${id}`;
-      a.textContent = result.classes[id];
+      a.textContent = name;
       li.appendChild(a);
       classList.appendChild(li);
-    }
-    count = Object.keys(result.classes).length;
+    });
+
+    count = Object.keys(classes).length;
   } else {
     let el = document.createElement("li");
     el.classList.add("none-found");
@@ -48,4 +56,3 @@ function addClass(event) {
 }
 
 document.forms["add-class"].onsubmit = addClass;
-

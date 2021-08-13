@@ -86,10 +86,17 @@ function renderStudents() {
     let students = result.studentsByClassId[classId];
     let count = 0;
     if (students && Object.keys(students).length) {
-      Object.keys(students).forEach(function (id) {
+      const ordered = Object.entries(students);
+
+      // TODO: Consider making this a setting
+      ordered.sort((a, b) => {
+        return a[1] < b[1] ? -1 : 1;
+      });
+
+      ordered.forEach(([id, name]) => {
         let li = document.createElement("li");
         let span = document.createElement("span");
-        span.textContent = students[id];
+        span.textContent = name;
         li.appendChild(span);
 
         let button = document.createElement("button");
