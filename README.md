@@ -11,13 +11,22 @@
 -   Upload backed up data
 -   Light and dark themes
 
-## Install
+## Documentation
 
-1. **Download**: Click "Clone or download" > "Download ZIP" or [use this link](https://github.com/SeanMcP/popsicle-sticks-mini/archive/master.zip)
-1. **Unzip**: Unzip the archive with your computer's default utility
-1. **Enable developer mode**
-    1. Go to [`chrome://extensions`](chrome://extensions)
-    1. Toggle "Developer mode" in the top right corner
-1. **Load extension**: Click "Load unpacked" and select the unzipped directory
+### How to add multiple students to a class
 
-You should see the extension added to your browser
+When on a class's page, the default option is to add one student at a time. If you want to add multiple students:
+
+1. Select "Add multiple students"
+2. Type/paste student names into the text box
+3. Select a format (one name per line, or names separated by commas)
+4. Select "Add all"
+
+### How to rename a class
+
+The extension does not currently allow you to rename existing classes. However, you can accomplish the same thing by following these steps:
+
+1. Create a new class with the desired name
+2. Select "Copy another class?"
+3. Select the original class
+4. Delete the original class
