@@ -1,16 +1,16 @@
 import { cloneObj, onLoad } from "./shared.js";
 
 onLoad();
-var classList = document.getElementById("class-list");
-var classCount = document.getElementById("class-count");
-var classNameInput = document.getElementById("name-input");
+let classList = document.getElementById("class-list");
+let classCount = document.getElementById("class-count");
+let classNameInput = document.getElementById("name-input");
 
 chrome.storage.sync.get("classes", function (result) {
-  var count = 0;
+  let count = 0;
   if (Object.keys(result.classes).length) {
-    for (var id in result.classes) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
+    for (let id in result.classes) {
+      let li = document.createElement("li");
+      let a = document.createElement("a");
       a.href = `class.html?id=${id}`;
       a.textContent = result.classes[id];
       li.appendChild(a);
@@ -30,8 +30,8 @@ function addClass(event) {
   event.preventDefault();
   if (classNameInput.value) {
     chrome.storage.sync.get("classes", function (result) {
-      var classes = cloneObj(result.classes);
-      var id = new Date().getTime();
+      let classes = cloneObj(result.classes);
+      let id = new Date().getTime();
       classes[id] = classNameInput.value;
 
       chrome.storage.sync.set(

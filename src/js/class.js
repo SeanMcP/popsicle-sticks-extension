@@ -2,12 +2,12 @@ import { cloneObj, getId, onLoad } from "./shared.js";
 
 onLoad();
 const classId = getId();
-var heading = document.querySelector("header > h1");
-var studentCount = document.getElementById("student-count");
-var studentNameInput = document.getElementById("name-input");
-var deleteClassButton = document.getElementById("delete-button");
-var studentList = document.getElementById("student-list");
-var randomLink = document.getElementById("random-link");
+let heading = document.querySelector("header > h1");
+let studentCount = document.getElementById("student-count");
+let studentNameInput = document.getElementById("name-input");
+let deleteClassButton = document.getElementById("delete-button");
+let studentList = document.getElementById("student-list");
+let randomLink = document.getElementById("random-link");
 
 const bulkLink = document.getElementById("bulk-link");
 bulkLink.href = bulkLink.href + "?id=" + classId;
@@ -20,9 +20,9 @@ function addStudent(event) {
   event.preventDefault();
   if (studentNameInput.value) {
     chrome.storage.sync.get("studentsByClassId", function (result) {
-      var studentsByClassId = cloneObj(result.studentsByClassId);
+      let studentsByClassId = cloneObj(result.studentsByClassId);
 
-      var studentId = new Date().getTime();
+      let studentId = new Date().getTime();
       if (!studentsByClassId[classId]) {
         studentsByClassId[classId] = {};
       }
@@ -43,7 +43,7 @@ function addStudent(event) {
 
 function deleteStudent(id) {
   chrome.storage.sync.get(["studentsByClassId"], function (result) {
-    var studentsByClassId = cloneObj(result.studentsByClassId);
+    let studentsByClassId = cloneObj(result.studentsByClassId);
     delete studentsByClassId[classId][id];
 
     chrome.storage.sync.set(
@@ -83,16 +83,16 @@ function renderStudents() {
     studentList.removeChild(studentList.firstChild);
   }
   chrome.storage.sync.get(["classes", "studentsByClassId"], function (result) {
-    var students = result.studentsByClassId[classId];
-    var count = 0;
+    let students = result.studentsByClassId[classId];
+    let count = 0;
     if (students && Object.keys(students).length) {
       Object.keys(students).forEach(function (id) {
-        var li = document.createElement("li");
-        var span = document.createElement("span");
+        let li = document.createElement("li");
+        let span = document.createElement("span");
         span.textContent = students[id];
         li.appendChild(span);
 
-        var button = document.createElement("button");
+        let button = document.createElement("button");
         button.type = "button";
         button.classList.add("reset");
         button.dataset.icon = "x-circle";
@@ -110,12 +110,12 @@ function renderStudents() {
       randomLink.disabled = false;
     } else {
       if (Object.keys(result.classes).length > 1) {
-        var a = document.createElement("a");
+        let a = document.createElement("a");
         a.href = `copy.html?id=${classId}`;
         a.textContent = "Copy another class?";
         studentList.appendChild(a);
       } else {
-        var p = document.createElement("p");
+        let p = document.createElement("p");
         p.textContent = "No students yet!";
         studentList.appendChild(p);
       }
