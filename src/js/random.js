@@ -3,8 +3,8 @@ import { getId, onLoad } from "./shared.js";
 
 onLoad();
 const classId = getId();
-const current = document.querySelector("main > h1");
 const back = document.querySelector("header > nav > a");
+const main = document.querySelector("main");
 const nextButton = document.getElementById("next-button");
 const prevButton = document.getElementById("prev-button");
 let students = [];
@@ -17,7 +17,6 @@ chrome.storage.sync.get(
   function ({ history, studentsByClassId }) {
     // History could be for another page, so we need to check
     // if we have the correct data first
-    console.log("🚩 [LM]:", history);
     if (history && history.data && history.data.students) {
       students = history.data.students;
       index = history.data.index;
@@ -35,7 +34,7 @@ chrome.storage.sync.get(
 function renderCurrent() {
   // Add current state to history before rendering
   addToHistory({ students, index });
-  current.textContent = students[index];
+  main.textContent = students[index];
 }
 
 // Taken from https://stackoverflow.com/a/6274398/8486161

@@ -94,8 +94,11 @@ function renderStudents() {
 
         var button = document.createElement("button");
         button.type = "button";
-        button.classList.add("delete");
-        button.textContent = "Remove";
+        button.classList.add("reset");
+        button.dataset.icon = "x-circle";
+        button.setAttribute("aria-label", "remove student");
+        button.setAttribute("title", "Remove student");
+
         button.addEventListener("click", function () {
           deleteStudent(id);
         });

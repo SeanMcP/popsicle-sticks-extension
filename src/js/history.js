@@ -1,5 +1,4 @@
 export function addToHistory(data = null) {
-  console.log("🚩 [LM]: adding to history", data);
   chrome.storage.sync.set({
     history: {
       data,
