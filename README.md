@@ -2,6 +2,13 @@
 
 🙋🏾‍♂️ A random student picker browser extension
 
+## Testimonials
+
+- "Easy to use"
+- "Simple"
+- "Useful"
+- "I set it up and was using it in about 6 minutes for all my high schoolers."
+
 ## Features
 
 -   Add and remove classes and students
