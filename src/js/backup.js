@@ -30,18 +30,21 @@ function downloadFile() {
 document.forms["download-data"].onsubmit = downloadFile;
 
 function saveUploadedData(event) {
-  const result = JSON.parse(event.target.result);
-  if (result.secret === secret) {
+  try {
+    const result = JSON.parse(event.target.result);
+    if (result.secret !== secret)
+      throw new Error("That file did not originate from this extension");
+
     const dataToSet = {};
     if (result.hasOwnProperty("classes")) dataToSet.classes = result.classes;
     if (result.hasOwnProperty("studentsByClassId"))
       dataToSet.studentsByClassId = result.studentsByClassId;
 
     chrome.storage.sync.set(dataToSet, function () {
-      document.location = "home.html";
+      document.location = "home.html?back=true";
     });
-  } else {
-    handleUploadError();
+  } catch (error) {
+    handleUploadError(error);
   }
 }
 
@@ -58,16 +61,22 @@ function uploadFile(event) {
   }
 }
 
-function handleUploadError() {
-  const message = document.createElement("p");
-  message.classList.add("error-message");
-  message.textContent = "Uh oh! That data wasn't formatted correctly.";
+function handleUploadError(error) {
+  const message = error.message.includes("Unexpected token")
+    ? "That data wasn't formatted correctly"
+    : error.message;
+
+  const el = document.createElement("p");
+  el.classList.add("error-message");
+  el.textContent = `Uh oh! ${message}.`;
+
   uploadForm.reset();
   uploadForm.classList.add("--error");
-  uploadForm.appendChild(message);
+  uploadForm.appendChild(el);
+
   setTimeout(() => {
     uploadForm.classList.remove("--error");
-    uploadForm.removeChild(message);
+    uploadForm.removeChild(el);
   }, 5000);
 }
 
