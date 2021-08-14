@@ -68,11 +68,10 @@ function deleteClass() {
     chrome.storage.sync.set(
       {
         classes: classes,
-        history: null,
         studentsByClassId: studentsByClassId,
       },
       function () {
-        document.location = "home.html";
+        document.location = "home.html?back=true";
       }
     );
   });
