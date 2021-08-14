@@ -1,7 +1,7 @@
 {
     "name": "Popsicle Sticks - Random student picker",
     "short_name": "Popsicle Sticks",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Randomly select a student in your class from any tab",
     "author": "Sean McPherson",
     "permissions": ["storage", "downloads"],
