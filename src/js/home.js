@@ -1,4 +1,4 @@
-import { cloneObj, onLoad } from "./shared.js";
+import { cloneObj, getBestValue, onLoad } from "./shared.js";
 
 onLoad();
 let classList = document.getElementById("class-list");
@@ -12,7 +12,7 @@ chrome.storage.sync.get("classes", function ({ classes }) {
 
     // TODO: Consider making this a setting
     ordered.sort((a, b) => {
-      return a[1] < b[1] ? -1 : 1;
+      return getBestValue(a[1]) < getBestValue(b[1]) ? -1 : 1;
     });
 
     ordered.forEach(([id, name]) => {

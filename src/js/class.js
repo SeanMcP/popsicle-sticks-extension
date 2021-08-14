@@ -1,4 +1,4 @@
-import { cloneObj, getId, onLoad } from "./shared.js";
+import { cloneObj, getBestValue, getId, onLoad } from "./shared.js";
 
 onLoad();
 const classId = getId();
@@ -90,7 +90,7 @@ function renderStudents() {
 
       // TODO: Consider making this a setting
       ordered.sort((a, b) => {
-        return a[1] < b[1] ? -1 : 1;
+        return getBestValue(a[1]) < getBestValue(b[1]) ? -1 : 1;
       });
 
       ordered.forEach(([id, name]) => {

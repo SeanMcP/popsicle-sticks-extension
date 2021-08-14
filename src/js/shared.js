@@ -43,3 +43,14 @@ export function setTheme() {
     document.body.dataset.theme = result.theme;
   });
 }
+
+/**
+ * If stringified number, returns number. Else returns string.
+ * @param {*} stringOrNumber 
+ * @returns 
+ */
+export function getBestValue(stringOrNumber) {
+  const parsed = parseInt(stringOrNumber);
+
+  return Number.isNaN(parsed) ? stringOrNumber : parsed;
+}
