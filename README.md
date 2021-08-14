@@ -11,12 +11,14 @@
 
 ## Features
 
--   Add and remove classes and students
--   Randomly select a student from your class
--   Copy a class of students
--   Download and backup class and student data
--   Upload backed up data
--   Light and dark themes
+- Add and remove classes/periods
+- Add students one at a time or in bulk
+- Copy students from existing classes
+- Saves history so you can click away
+- Pop out mode for easy projecting
+- Light and dark mode
+- Class and student data synced to your Chrome account
+- Download data for backup
 
 ## Documentation
 
