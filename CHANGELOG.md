@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed student ids, moved to string array for students in class
 - Moved history from `sync` to `local` storage
 
+## [1.4.1] - 2021-08-16
+
+### Fixes
+
+- Included icon images in package
+
 ## [1.4] - 2021-08-14
 
 ### Added
