@@ -1,11 +1,16 @@
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.sync.get(["classes", "v", "studentsByClassId"], (result) => {
-    if (!result.v || result.v != 1) {
-      const classIds = Object.keys(result.classes);
+    if (result.v == 1) {
+      // Current version; no setup required
+      return;
+    } else if (!result.v && typeof result.classes === "object") {
+      // Pre-versioned release; migrate data
+      // KEEP THIS BLOCK IN SYNC WITH backup.js
+      const classIds = Object.keys(result.classes || {});
       if (classIds && classIds.length) {
-        // Migrate to new format
         const classes = {};
         const studentsByClassId = {};
+
         classIds.forEach((id, i) => {
           const newId = "c" + i;
           classes[newId] = result.classes[id];
@@ -27,15 +32,14 @@ chrome.runtime.onInstalled.addListener(function () {
           }
         );
       }
-
-      return;
+    } else {
+      // First install; initialize state
+      chrome.storage.sync.set({
+        classes: {},
+        studentsByClassId: {},
+        theme: "light",
+        v: 1,
+      });
     }
-
-    chrome.storage.sync.set({
-      classes: {},
-      studentsByClassId: {},
-      theme: "light",
-      v: 1,
-    });
   });
 });
