@@ -25,7 +25,13 @@ function addStudent(event) {
       if (!studentsByClassId[classId]) {
         studentsByClassId[classId] = [];
       }
-      studentsByClassId[classId].push(studentNameInput.value);
+
+      const student = studentNameInput.value
+      if (studentsByClassId[classId].includes(student)) {
+        alert(`There is already a student named \"${student}\" in this class. Try including the first initial of their last name.`)
+      } else {
+        studentsByClassId[classId].push(studentNameInput.value);
+      }
 
       chrome.storage.sync.set(
         {
@@ -68,8 +74,8 @@ function deleteClass() {
 
     chrome.storage.sync.set(
       {
-        classes: classes,
-        studentsByClassId: studentsByClassId,
+        classes,
+        studentsByClassId,
       },
       function () {
         document.location = "home.html?back=true";
