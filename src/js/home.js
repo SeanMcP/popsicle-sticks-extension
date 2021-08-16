@@ -38,8 +38,8 @@ function addClass(event) {
   event.preventDefault();
   if (classNameInput.value) {
     chrome.storage.sync.get("classes", function (result) {
-      let classes = cloneObj(result.classes);
-      let id = new Date().getTime();
+      const classes = cloneObj(result.classes);
+      const id = 'c' + Object.keys(classes).length;
       classes[id] = classNameInput.value;
 
       chrome.storage.sync.set(
