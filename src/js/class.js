@@ -20,17 +20,16 @@ function addStudent(event) {
   event.preventDefault();
   if (studentNameInput.value) {
     chrome.storage.sync.get("studentsByClassId", function (result) {
-      let studentsByClassId = cloneObj(result.studentsByClassId);
+      const studentsByClassId = cloneObj(result.studentsByClassId);
 
-      let studentId = new Date().getTime();
       if (!studentsByClassId[classId]) {
-        studentsByClassId[classId] = {};
+        studentsByClassId[classId] = [];
       }
-      studentsByClassId[classId][studentId] = studentNameInput.value;
+      studentsByClassId[classId].push(studentNameInput.value);
 
       chrome.storage.sync.set(
         {
-          studentsByClassId: studentsByClassId,
+          studentsByClassId,
         },
         function () {
           studentNameInput.value = "";
@@ -41,10 +40,12 @@ function addStudent(event) {
   }
 }
 
-function deleteStudent(id) {
+function deleteStudent(name) {
   chrome.storage.sync.get(["studentsByClassId"], function (result) {
-    let studentsByClassId = cloneObj(result.studentsByClassId);
-    delete studentsByClassId[classId][id];
+    const studentsByClassId = cloneObj(result.studentsByClassId);
+    studentsByClassId[classId] = studentsByClassId[classId].filter(
+      (item) => item !== name
+    );
 
     chrome.storage.sync.set(
       {
@@ -84,15 +85,15 @@ function renderStudents() {
   chrome.storage.sync.get(["classes", "studentsByClassId"], function (result) {
     let students = result.studentsByClassId[classId];
     let count = 0;
-    if (students && Object.keys(students).length) {
-      const ordered = Object.entries(students);
+    if (students && students.length) {
+      const ordered = [...students];
 
       // TODO: Consider making this a setting
       ordered.sort((a, b) => {
-        return getBestValue(a[1]) < getBestValue(b[1]) ? -1 : 1;
+        return getBestValue(a) < getBestValue(b) ? -1 : 1;
       });
 
-      ordered.forEach(([id, name]) => {
+      ordered.forEach((name) => {
         let li = document.createElement("li");
         let span = document.createElement("span");
         span.textContent = name;
@@ -106,7 +107,7 @@ function renderStudents() {
         button.setAttribute("title", "Remove student");
 
         button.addEventListener("click", function () {
-          deleteStudent(id);
+          deleteStudent(name);
         });
         li.appendChild(button);
 
