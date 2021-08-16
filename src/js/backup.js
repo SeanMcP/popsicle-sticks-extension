@@ -10,13 +10,14 @@ function generateJSONBlob(data) {
 
 function downloadFile() {
   chrome.storage.sync.get(
-    ["classes", "studentsByClassId", "theme"],
+    ["classes", "studentsByClassId", "theme", "v"],
     (result) => {
       const blob = generateJSONBlob({
         classes: result.classes,
         secret,
         studentsByClassId: result.studentsByClassId,
         theme: result.theme,
+        v: result.v,
       });
       const url = URL.createObjectURL(blob);
       chrome.downloads.download({
@@ -39,6 +40,8 @@ function saveUploadedData(event) {
     if (result.hasOwnProperty("classes")) dataToSet.classes = result.classes;
     if (result.hasOwnProperty("studentsByClassId"))
       dataToSet.studentsByClassId = result.studentsByClassId;
+    if (result.hasOwnProperty("theme")) dataToSet.theme = result.theme;
+    if (result.hasOwnProperty("v")) dataToSet.v = result.v;
 
     chrome.storage.sync.set(dataToSet, function () {
       document.location = "home.html?back=true";
