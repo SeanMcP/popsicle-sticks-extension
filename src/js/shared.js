@@ -1,13 +1,3 @@
-export function addToHistory(data = null) {
-  chrome.storage.sync.set({
-    history: {
-      data,
-      path: window.location.pathname + window.location.search,
-      timestamp: new Date().getTime(),
-    },
-  });
-}
-
 export function cloneObj(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
@@ -46,8 +36,8 @@ export function setTheme() {
 
 /**
  * If stringified number, returns number. Else returns string.
- * @param {*} stringOrNumber 
- * @returns 
+ * @param {*} stringOrNumber
+ * @returns
  */
 export function getBestValue(stringOrNumber) {
   const parsed = parseInt(stringOrNumber);

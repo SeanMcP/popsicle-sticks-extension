@@ -12,24 +12,24 @@ let index = 0;
 
 back.href = `class.html?id=${classId}&back=true`;
 
-chrome.storage.sync.get(
-  ["history", "studentsByClassId"],
-  function ({ history, studentsByClassId }) {
-    // History could be for another page, so we need to check
-    // if we have the correct data first
-    if (history && history.data && history.data.students) {
-      students = history.data.students;
-      index = history.data.index;
-    } else {
+chrome.storage.local.get("history", ({ history }) => {
+  // History could be for another page, so we need to check
+  // if we have the correct data first
+  if (history && history.data && history.data.students) {
+    students = history.data.students;
+    index = history.data.index;
+    renderCurrent();
+  } else {
+    chrome.storage.sync.get(["studentsByClassId"], ({ studentsByClassId }) => {
       const studentsById = studentsByClassId[classId];
       for (const id in studentsById) {
         students.push(studentsById[id]);
       }
       students = shuffle(students);
-    }
-    renderCurrent();
+      renderCurrent();
+    });
   }
-);
+});
 
 function renderCurrent() {
   // Add current state to history before rendering
