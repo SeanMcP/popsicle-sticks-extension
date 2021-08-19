@@ -40,6 +40,7 @@ bulkAddForm.addEventListener("submit", (event) => {
     }
 
     names.forEach((name) => {
+      // TODO: Consider skipping names that already exist in list
       studentsByClassId[classId].push(name);
     });
 
