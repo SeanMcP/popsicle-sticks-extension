@@ -2,11 +2,16 @@
 
 ## Setup
 
+- [ ] Clone the repository
+- [ ] Check out the branch to be tested
+- [ ] Go to chrome://extensions
+- [ ] Select "Load unpacked" > Select directory
+
 ## Cases
 
-### Add class/student flows
-
 These are designed to be run in order, so some cases depend on previous ones.
+
+### Add class/student flows
 
 - [ ] Input class name > Select "Add class" > **Navigate automatically to class page**
 - [ ] Select class > **See class name in header**
@@ -22,9 +27,25 @@ These are designed to be run in order, so some cases depend on previous ones.
 - [ ] Select class B > Input student name > **Student IS in class B BUT NOT in class A**
 - [ ] Select class B > Select "Delete this class" > **1) Navigate back to home view; 2) Class B is removed from list**
 
+### Theme
+
+- [ ] Select "Settings" > Select "Dark" theme > **1) Theme changes on selection; 2) Theme is correct for all pages:**
+  - [ ] **Backup**
+  - [ ] **Home**
+  - [ ] **Class**
+  - [ ] **Bulk**
+  - [ ] **Copy**
+  - [ ] **Random**
+
 ### Data/backup
 
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > **1) See option to download data; 2) See option to upload data**
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Download data" > **Triggers JSON download**
 - [ ] Open downloaded file > **Contains keys: `classes`, `secret`, `studentsByClassId`, `theme`**
-- [ ] Open downloaded data file > **Data is missing class B in `classes` and `studentsByClassId`**
+- [ ] Open downloaded data file > **1) Is valid JSON; 2) Has all of the following:**
+  - [ ] **`classes` property matches expected values**
+  - [ ] **`studentsByClassId` property matches expected values**
+  - [ ] **`secret` property is "Luke 8:17"**
+  - [ ] **`theme` data is correct**
+  - [ ] **`v` property is present**
+  - [ ] **Missing class B in `classes` and `studentsByClassId`**
