@@ -47,5 +47,4 @@ These are designed to be run in order, so some cases depend on previous ones.
   - [ ] **`studentsByClassId` property matches expected values**
   - [ ] **`secret` property is "Luke 8:17"**
   - [ ] **`theme` data is correct**
-  - [ ] **`v` property is present**
   - [ ] **Missing class B in `classes` and `studentsByClassId`**
