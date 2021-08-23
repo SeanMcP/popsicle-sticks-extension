@@ -16,7 +16,7 @@ These are designed to be run in order, so some cases depend on previous ones.
 - [ ] Input class name > Select "Add class" > **Navigate automatically to class page**
 - [ ] Select class > **See class name in header**
 - [ ] Select class > **DO NOT see "Copy another class?" link**
-- [ ] Select class > Input student name > Select "Add student" > **Student is rendered in list** 
+- [ ] Select class > Input student name > Select "Add student" > **Student is rendered in list**
 - [ ] Select class > Input repeated student name > Select "Add student" > **Alert about duplicate student names**
 - [ ] Select class > Select "Add multiple students" > Input students with new lines > Select "Add all" > **1) Navigate back to class view; 2) Students are rendered in list**
 - [ ] Select class > Select "Add multiple students" > Input students separated by commas > Select "Names separated by commas" > Select "Add all" > **1) Navigate back to class view; 2) Students are rendered in list**
@@ -26,6 +26,15 @@ These are designed to be run in order, so some cases depend on previous ones.
 - [ ] Select class B > Select "Copy another class?" > Select class A > Select "Copy" > **1) Navigate back to class view; 2) Students from class A are copied to class B**
 - [ ] Select class B > Input student name > **Student IS in class B BUT NOT in class A**
 - [ ] Select class B > Select "Delete this class" > **1) Navigate back to home view; 2) Class B is removed from list**
+
+### Random picker
+
+- [ ] Select class > Select "Random Picker" > **A student from this class is displayed**
+  - [ ] Select "Next" > **See a different student from the class**
+  - [ ] Select "Previous" > **See the first student**
+  - [ ] Select "Next" until through class > **1) List continues infinitely; 2) Order is shuffled**
+    - **Note**: A name may repeat if it was the last in one set, and then the first in a second shuffled set. This is unlikely with larger classes but more probable with smaller test classes.
+  - [ ] Select "Back" > **Navigate to class page**
 
 ### Theme
 
@@ -48,3 +57,8 @@ These are designed to be run in order, so some cases depend on previous ones.
   - [ ] **`secret` property is "Luke 8:17"**
   - [ ] **`theme` data is correct**
   - [ ] **Missing class B in `classes` and `studentsByClassId`**
+- [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/invalid.json` > Select "Upload" > **1) See error message "That data wasn't formatted correctly"; 2) No data changes are applied**
+- [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/empty.json` > Select "Upload" > **1) See error message "That file did not originate from this extension"; 2) No data changes are applied**
+- [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/valid.json` > Select "Upload" > **1) Navigate back to home view; 2) Data for three classes and their students applied correctly**
+
+### History

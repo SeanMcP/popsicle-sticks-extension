@@ -1,0 +1,27 @@
+{
+  "classes": {
+    "0000": "Pokemon",
+    "0001": "Zelda",
+    "0002": "Lord of the Rings"
+  },
+  "secret": "Luke 8:17",
+  "studentsByClassId": {
+    "0000": {
+      "9000": "Ash",
+      "9001": "Misty",
+      "9002": "Brock"
+    },
+    "0001": {
+      "9003": "Link",
+      "9004": "Navi",
+      "9005": "Zelda"
+    },
+    "0002": {
+      "9006": "Frodo",
+      "9007": "Sam",
+      "9008": "Merry",
+      "9009": "Pippin"
+    }
+  },
+  "theme": "dark"
+}
