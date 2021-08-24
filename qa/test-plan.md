@@ -2,8 +2,20 @@
 
 ## Setup
 
+### Git
+
+- [ ] Go to https://github.com/seanmcp/popsicle-sticks-extension
 - [ ] Clone the repository
 - [ ] Check out the branch to be tested
+- [ ] Go to chrome://extensions
+- [ ] Select "Load unpacked" > Select directory
+
+### Manual
+
+- [ ] Go to https://github.com/seanmcp/popsicle-sticks-extension
+- [ ] Select the branch to be tested
+- [ ] Select "Code" > "Download ZIP"
+- [ ] Unzip on your computer
 - [ ] Go to chrome://extensions
 - [ ] Select "Load unpacked" > Select directory
 
@@ -62,3 +74,22 @@ These are designed to be run in order, so some cases depend on previous ones.
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/valid.json` > Select "Upload" > **1) Navigate back to home view; 2) Data for three classes and their students applied correctly**
 
 ### History
+
+All of these cases are from a cold start
+
+- [ ] Open extension > Navigate to page > Close extension > Open extension > **See last visited page**
+  - [ ] **Backup**
+  - [ ] **Bulk**
+  - [ ] **Class**
+  - [ ] **Copy**
+  - [ ] **Random**
+- [ ] Open extension > Select class > Select "Random Picker" > Close extension > Open extension > **See same student**
+- [ ] Open extension > Navigate to page > Close extension > Wait 5 minutes > Open extension > **See home page**
+
+### Pop out
+
+- [ ] **See "Pop out in new window" button**
+- [ ] Select "Pop out in new window" > **See pop out of current page**
+- [ ] Select "Pop out in new window" > Select class > Close pop out > Open extension > **See last visited page from pop out**
+- [ ] Select class > Select "Random Picker" > **See "Pop out in new window" button**
+- [ ] Select class > Select "Random Picker" > Select "Pop out in new window" > **See pop out of current page and state**
