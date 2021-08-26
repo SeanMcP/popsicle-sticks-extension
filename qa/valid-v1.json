@@ -1,0 +1,15 @@
+{
+  "classes": {
+    "c0": "Pokemon",
+    "c1": "Zelda",
+    "c2": "Lord of the Rings"
+  },
+  "secret": "Luke 8:17",
+  "studentsByClassId": {
+    "c0": ["Ash", "Misty", "Brock"],
+    "c1": ["Link", "Navi", "Zelda"],
+    "c2": ["Frodo", "Sam", "Merry", "Pippin"]
+  },
+  "theme": "dark",
+  "v": 1
+}

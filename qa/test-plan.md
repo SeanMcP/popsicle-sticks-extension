@@ -68,10 +68,11 @@ These are designed to be run in order, so some cases depend on previous ones.
   - [ ] **`studentsByClassId` property matches expected values**
   - [ ] **`secret` property is "Luke 8:17"**
   - [ ] **`theme` data is correct**
+  - [ ] **`v` (version) data is correct**
   - [ ] **Missing class B in `classes` and `studentsByClassId`**
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/invalid.json` > Select "Upload" > **1) See error message "That data wasn't formatted correctly"; 2) No data changes are applied**
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/empty.json` > Select "Upload" > **1) See error message "That file did not originate from this extension"; 2) No data changes are applied**
-- [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/valid.json` > Select "Upload" > **1) Navigate back to home view; 2) Data for three classes and their students applied correctly**
+- [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/valid-v1.json` > Select "Upload" > **1) Navigate back to home view; 2) Data for three classes and their students applied correctly; 3) Theme is applied**
 
 ### History
 
