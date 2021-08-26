@@ -39,7 +39,19 @@ function addClass(event) {
   if (classNameInput.value) {
     chrome.storage.sync.get("classes", function (result) {
       const classes = cloneObj(result.classes);
-      const id = 'c' + Object.keys(classes).length;
+
+      // Find the lowest available id
+      let index = 0;
+      let id;
+      while (!id) {
+        const potentialId = 'c' + index;
+        if (classes.hasOwnProperty(potentialId)) {
+          index++;
+        } else {
+          id = potentialId;
+        }
+      }
+
       classes[id] = classNameInput.value;
 
       chrome.storage.sync.set(
