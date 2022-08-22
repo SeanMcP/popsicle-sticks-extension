@@ -19,7 +19,7 @@ bulkAddForm.addEventListener("submit", (event) => {
 
   switch (delineator) {
     case "newline": {
-      names = students.split("\r\n");
+      names = students.split("\n");
       break;
     }
     case "comma": {
