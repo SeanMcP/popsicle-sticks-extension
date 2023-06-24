@@ -1,5 +1,5 @@
 export function addToHistory(data = null) {
-  chrome.storage.sync.set({
+  chrome.storage.local.set({
     history: {
       data,
       path: window.location.pathname + window.location.search,
@@ -18,15 +18,15 @@ const page = window.location.pathname.split(".html")[0].split("/").pop();
 switch (page) {
   case "home": {
     if (window.location.search.includes("back=true")) {
-      chrome.storage.sync.set({
+      chrome.storage.local.set({
         history: null,
       });
     } else {
-      chrome.storage.sync.get("history", ({ history }) => {
+      chrome.storage.local.get("history", ({ history }) => {
         if (history && history.timestamp > historyCutoff()) {
           window.location = history.path;
         } else {
-          chrome.storage.sync.set({ history: null });
+          chrome.storage.local.set({ history: null });
         }
       });
     }

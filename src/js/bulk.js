@@ -36,12 +36,12 @@ bulkAddForm.addEventListener("submit", (event) => {
     const studentsByClassId = cloneObj(result.studentsByClassId);
 
     if (!studentsByClassId[classId]) {
-      studentsByClassId[classId] = {};
+      studentsByClassId[classId] = [];
     }
 
-    const id = new Date().getTime() - names.length;
-    names.forEach((name, i) => {
-      studentsByClassId[classId][id + i] = name;
+    names.forEach((name) => {
+      // TODO: Consider skipping names that already exist in list
+      studentsByClassId[classId].push(name);
     });
 
     chrome.storage.sync.set(

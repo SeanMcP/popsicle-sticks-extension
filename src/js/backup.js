@@ -10,13 +10,14 @@ function generateJSONBlob(data) {
 
 function downloadFile() {
   chrome.storage.sync.get(
-    ["classes", "studentsByClassId", "theme"],
+    ["classes", "studentsByClassId", "theme", "v"],
     (result) => {
       const blob = generateJSONBlob({
         classes: result.classes,
         secret,
         studentsByClassId: result.studentsByClassId,
         theme: result.theme,
+        v: result.v,
       });
       const url = URL.createObjectURL(blob);
       chrome.downloads.download({
@@ -39,6 +40,34 @@ function saveUploadedData(event) {
     if (result.hasOwnProperty("classes")) dataToSet.classes = result.classes;
     if (result.hasOwnProperty("studentsByClassId"))
       dataToSet.studentsByClassId = result.studentsByClassId;
+    if (result.hasOwnProperty("theme")) dataToSet.theme = result.theme;
+    if (result.hasOwnProperty("v")) dataToSet.v = result.v;
+
+    if (!dataToSet.v) {
+      // Pre-versioned release; migrate data
+      // KEEP THIS BLOCK IN SYNC WITH index.js
+      const classIds = Object.keys(result.classes || {});
+
+      if (classIds && classIds.length) {
+        const classes = {};
+        const studentsByClassId = {};
+
+        classIds.forEach((id, i) => {
+          const newId = "c" + i;
+          classes[newId] = result.classes[id];
+
+          if (result.studentsByClassId[id]) {
+            studentsByClassId[newId] = Object.values(
+              result.studentsByClassId[id]
+            );
+          }
+        });
+
+        dataToSet.classes = classes;
+        dataToSet.studentsByClassId = studentsByClassId;
+        dataToSet.v = 1;
+      }
+    }
 
     chrome.storage.sync.set(dataToSet, function () {
       document.location = "home.html?back=true";
