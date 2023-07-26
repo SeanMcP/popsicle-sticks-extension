@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add version property (`v`) to `sync` storage
 - Add version, theme to backup data
 - Migrate data on install/upload to current version (v1)
+- Feedback link to settings page
 
 ### Changed
 

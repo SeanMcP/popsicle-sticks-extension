@@ -18,3 +18,9 @@ function updateTheme(event) {
 }
 
 document.getElementById("theme").onchange = updateTheme;
+
+// This assumes there is only one link on the page
+document.querySelector("a[data-url]").addEventListener("click", (event) => {
+  event.preventDefault();
+  chrome.tabs.create({ url: event.target.dataset.url });
+});
