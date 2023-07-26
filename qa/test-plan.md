@@ -74,6 +74,11 @@ These are designed to be run in order, so some cases depend on previous ones.
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/empty.json` > Select "Upload" > **1) See error message "That file did not originate from this extension"; 2) No data changes are applied**
 - [ ] Select "Settings" > Select "Download or upload your class and student data" > Select "Choose file" > Select `qa/valid-v1.json` > Select "Upload" > **1) Navigate back to home view; 2) Data for three classes and their students applied correctly; 3) Theme is applied**
 
+### Feedback link
+
+- [ ] Select "Settings" > **See link to feedback form**
+- [ ] Select "Settings" > Select "Send us your feedback" > **URL opens in new tab**
+
 ### History
 
 All of these cases are from a cold start
